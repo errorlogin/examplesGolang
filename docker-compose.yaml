@@ -1,0 +1,16 @@
+version: "3.7"  # optional since v1.27.0
+services:
+
+  golang:
+    container_name: golang
+    hostname: golang
+    image: golang:23.3
+    build:
+      context: ./docker
+    volumes:
+      - vgo:/home/u1
+    command: bash -c "tail -f /dev/null"
+
+volumes:
+  vgo:
+    driver: local    
