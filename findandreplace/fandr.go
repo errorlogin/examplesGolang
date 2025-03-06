@@ -30,11 +30,9 @@ func main() {
 	}
 
 	var L2 []string
-	var L3 []string
 	scanner = bufio.NewScanner(file)
 	for scanner.Scan() {
 		L2 = append(L2, scanner.Text())
-		L3 = append(L3, scanner.Text())
 	}
 
 	for _, l1 := range L1 {
@@ -46,7 +44,8 @@ func main() {
 		for i, l2 := range L2 {
 			if err == nil && regexpL1.MatchString(l2) {
 				updatedText := strings.ReplaceAll(l2, l1, "")
-				L3[i] = updatedText
+				L2[i] = updatedText
+				fmt.Println(updatedText)
 			}
 		}
 	}
@@ -59,7 +58,7 @@ func main() {
 	defer file.Close()
 
 	w := bufio.NewWriter(file)
-	for _, line := range L3 {
+	for _, line := range L2 {
 		fmt.Fprintln(w, line)
 	}
 	w.Flush()
