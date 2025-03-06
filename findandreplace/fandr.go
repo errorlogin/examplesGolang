@@ -30,23 +30,23 @@ func main() {
 	}
 
 	var L2 []string
+	var L3 []string
 	scanner = bufio.NewScanner(file)
 	for scanner.Scan() {
 		L2 = append(L2, scanner.Text())
+		L3 = append(L3, scanner.Text())
 	}
 
-	var L3 []string
 	for _, l1 := range L1 {
 		fmt.Println(l1)
 		regexpL1, err := regexp.Compile("(" + l1 + ")")
 		if err != nil {
 			log.Fatal(err)
 		}
-		for _, l2 := range L2 {
+		for i, l2 := range L2 {
 			if err == nil && regexpL1.MatchString(l2) {
 				updatedText := strings.ReplaceAll(l2, l1, "")
-				//fmt.Println(updatedText)
-				L3 = append(L3, updatedText)
+				L3[i] = updatedText
 			}
 		}
 	}
