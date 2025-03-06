@@ -45,7 +45,7 @@ func main() {
 			if err == nil && regexpL1.MatchString(l2) {
 				updatedText := strings.ReplaceAll(l2, l1, "")
 				L2[i] = updatedText
-				fmt.Println(updatedText)
+				//fmt.Println(updatedText)
 			}
 		}
 	}
